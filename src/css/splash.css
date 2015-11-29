@@ -1,0 +1,122 @@
+#splash-wrapper {
+    z-index: 10;
+}
+
+#splash-wrapper,
+.splash-back .splash-back-stars,
+.splash-back .splash-back-flicker {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#splash-wrapper .splash-back-stars {
+    background: #000000 url("../data/images/stars.png");
+}
+
+#splash-wrapper .splash-back-flicker {
+    background: url("../data/images/flicker.png");
+    animation: move-twink-back 100s linear infinite;
+}
+
+#splash-wrapper .orbit-system {
+    position: absolute;
+    top: 30%;
+    left: 49%;
+    transform: rotateX(75deg) rotateY(-30deg);
+    transform-style: preserve-3d;
+}
+
+#splash-wrapper .planet,
+#splash-wrapper .satellite-orbit,
+#splash-wrapper .satellite-orbit .satellite {
+    position: absolute;
+    top: 50%;
+    transform-style: preserve-3d;
+}
+
+#splash-wrapper .planet {
+    width: 145px;
+    height: 145px;
+    margin-top: -72px;
+    margin-left: -72px;
+    border-radius: 50%;
+    background-color: rgba(31, 40, 45, 1);
+    transform: rotateY(30deg) rotateX(-75deg);
+}
+
+#splash-wrapper .satellite-orbit {
+    width: 256px;
+    height: 256px;
+    margin-top: -128px;
+    margin-left: -128px;
+    border: 1px solid white;
+    border-radius: 50%;
+    animation: orbit 5s linear infinite;
+}
+
+#splash-wrapper .satellite {
+    width: 48px;
+    height: 48px;
+    margin-top: -24px;
+    margin-left: -24px;
+    background-color: #999999;
+    border-radius: 50%;
+    animation: invert-orbit 5s linear infinite;
+}
+
+#splash-wrapper .title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #a7adba;
+    font-size: 90px;
+    letter-spacing: 15px;
+}
+
+#splash-wrapper .progress-bar-wrapper {
+    display: none;
+    position: absolute;
+    top: 70%;
+    left: 20%;
+    width: 60%;
+    height: 5px;
+    overflow: hidden;
+    background-color: #550000;
+    border: 1px solid #000066;
+}
+
+#splash-wrapper .progress-bar-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+}
+
+#splash-wrapper .unsupported-message {
+    display: none;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    line-height: 20px;
+}
+
+@keyframes move-twink-back {
+    from { background-position: 0 0; }
+    to { background-position: -2500px 1250px; }
+}
+
+@keyframes orbit {
+    0% { transform: rotateZ(0deg); }
+    100% { transform: rotateZ(360deg); }
+}
+
+@keyframes invert-orbit {
+    0% { transform: rotateZ(360deg) rotateY(30deg) rotateX(-75deg); }
+    100% { transform: rotateZ(0deg) rotateY(30deg) rotateX(-75deg); }
+}

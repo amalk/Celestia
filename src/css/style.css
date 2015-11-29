@@ -1,0 +1,98 @@
+body {
+    font-family: "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+    font-size: 13px;
+    color: #EEEEEE;
+}
+
+canvas {
+    display: block;
+}
+
+/* Hide dat.gui's save row */
+.dg li.save-row {
+    display: none;
+}
+
+.dg.a.has-save > ul {
+    margin-top: 0 !important;
+}
+
+#status {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #111111;
+}
+
+#status ul li {
+    display: block;
+    position: relative;
+    float: left;
+    background-color: #111111;
+}
+
+/* This hides the dropdowns */
+#status li ul {
+    display: none;
+}
+
+#status ul li div {
+    padding: 5px 10px;
+    white-space: nowrap;
+    border-right: 1px solid #2C2C2C;
+    border-bottom: 1px solid #2C2C2C;
+}
+
+#status li li {
+    float: none;
+}
+
+#status ul li div:hover {
+    background: #1A1A1A;
+}
+
+#status ul li div.status-div-nohover:hover {
+    background: #111111;
+}
+
+/* First level dropdown */
+#status ul li > ul {
+    position: absolute;
+    bottom: 100%;
+}
+
+/* Displays second level dropdowns to the right of the first level dropdown */
+#status ul li ul li ul {
+    position: absolute;
+    top: -100%;
+    left: 100%;
+}
+
+/* Display the dropdown */
+#status ul li ul li:hover > ul {
+    display: block;
+}
+
+/* Custom styling */
+#status div.status-btn-pause {
+    width: 50px;
+    text-align: center;
+}
+
+#status ul.status-body-info {
+    width: 130px;
+}
+
+#status ul.status-body-info span,
+#status div.status-info-bodycount span {
+    color: #FF0000;
+    font-weight: bold;
+}
+
+#status div.status-info-bodycount {
+    border-left: 1px solid #2C2C2C;
+}
+
+#status li.status-info {
+    float: right;
+}
