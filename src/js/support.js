@@ -34,20 +34,18 @@ function support() {
         }
 
         // --- unsupported --- //
-        // display unsupported message
-
+        var message = document.getElementsByClassName('unsupported-message')[0];
+        message.style.display = 'block';
 
         return false;
     })();
 
-    return supported;
-}
-
-function getSplashScreen() {
-    var el = document.createElement('div');
-    el.id = 'splash-wrapper';
-    el.innerHTML = splashHTML;
-    return el;
+    function getSplashScreen() {
+        var el = document.createElement('div');
+        el.id = 'splash-wrapper';
+        el.innerHTML = splashHTML;
+        return el;
+    }
 }
 
 window.onload = support;

@@ -74,9 +74,16 @@ canvas {
 }
 
 /* Custom styling */
+#status li.status-btn-pause-wrap {
+    float: right;
+    background-color: #990000;
+}
+
 #status div.status-btn-pause {
     width: 50px;
     text-align: center;
+    border-right: none;
+    border-left: 1px solid #2C2C2C;
 }
 
 #status ul.status-body-info {
@@ -95,4 +102,24 @@ canvas {
 
 #status li.status-info {
     float: right;
+}
+
+#status .status-help-card {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    border: 1px solid #2C2C2C;
+    background-color: #111111;
+}
+
+#status .status-help-card span {
+    color: #2FA1D6;
+    display: block;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 8px 0;
+}
+
+#status .status-help-card p {
+    
 }

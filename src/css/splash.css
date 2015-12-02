@@ -11,11 +11,11 @@
 }
 
 #splash-wrapper .splash-back-stars {
-    background: #000000 url("../data/images/stars.png");
+    background: #000000 url("../data/images/stars.png") 0% 0% repeat;
 }
 
 #splash-wrapper .splash-back-flicker {
-    background: url("../data/images/flicker.png");
+    background: url("../data/images/flicker.png") 0% 0% repeat;
     animation: move-twink-back 100s linear infinite;
 }
 
@@ -41,7 +41,7 @@
     margin-top: -72px;
     margin-left: -72px;
     border-radius: 50%;
-    background-color: rgba(31, 40, 45, 1);
+    background-color: rgb(31, 40, 45);
     transform: rotateY(30deg) rotateX(-75deg);
 }
 
@@ -83,8 +83,8 @@
     width: 60%;
     height: 5px;
     overflow: hidden;
-    background-color: #550000;
-    border: 1px solid #000066;
+    background-color: #333333;
+    border: 1px solid #2C2C2C;
 }
 
 #splash-wrapper .progress-bar-progress {

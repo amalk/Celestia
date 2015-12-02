@@ -20,12 +20,14 @@ var statusBar = (function() {
             subMenus[1].children[1].style.display = 'none';
             var style = subMenus[0].children[1].style;
             style.display = style.display === 'block' ? 'none' : 'block';
+            return false;
         };
 
         subMenus[1].onclick = function() {
             subMenus[0].children[1].style.display = 'none';
             var style = subMenus[1].children[1].style;
             style.display = style.display === 'block' ? 'none' : 'block';
+            return false;
         };
 
         var addBtn = container.getElementsByClassName('status-btn-add')[0];
@@ -46,6 +48,12 @@ var statusBar = (function() {
 
         var removeAll = container.getElementsByClassName('status-btn-remove-all')[0];
         removeAll.onclick = canvas.flagAllForRemoval;
+
+        var helpBtn = container.getElementsByClassName('status-btn-help')[0];
+        var helpCard = container.getElementsByClassName('status-help-card')[0];
+        helpBtn.onclick = function() {
+            helpCard.style.display = helpCard.style.display === 'block' ? 'none' : 'block';
+        };
 
         pauseBtn = container.getElementsByClassName('status-btn-pause')[0];
         pauseBtn.onclick = pauseToggle;

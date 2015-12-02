@@ -55,7 +55,16 @@ var preloader = (function() {
     function onComplete(event) {
         init();
 
-        document.getElementById('splash-wrapper').style.display = 'none';
+        var wrapper = document.getElementById('splash-wrapper');
+
+        TweenLite.to(wrapper, 0.8, {
+            autoAlpha: 0,
+            display: 'none',
+            delay: 0.5,
+            onComplete: function() {
+                document.body.removeChild(wrapper);
+            }
+        });
     }
 
     return {

@@ -242,7 +242,7 @@ var canvas = (function() {
 
                 hideDatGUI(true);
 
-                statusBar.pauseToggle();
+                // statusBar.pauseToggle();
             }
         };
 
