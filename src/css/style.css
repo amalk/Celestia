@@ -110,6 +110,7 @@ canvas {
     bottom: 100%;
     border: 1px solid #2C2C2C;
     background-color: #111111;
+    padding-bottom: 10px;
 }
 
 #status .status-help-card span {
@@ -121,5 +122,26 @@ canvas {
 }
 
 #status .status-help-card p {
-    
+
+}
+
+#status .status-settings {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    border: 1px solid #2C2C2C;
+    background-color: #111111;
+}
+
+#status .status-settings label {
+    display: block;
+    margin: 5px 0;
+}
+
+#status .status-settings input {
+    margin: 0;
+    vertical-align: bottom;
+    position: relative;
+    top: -1;
+    outline: 0;
 }

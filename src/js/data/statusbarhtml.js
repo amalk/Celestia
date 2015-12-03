@@ -17,18 +17,28 @@ var statusBarHTML =
     <li class="status-btn-sub">\
       <div>Body Info</div>\
       <ul class="status-body-info">\
-        <li><div>X: <span>-</span></div></li>\
-        <li><div>Y: <span>-</span></div></li>\
-        <li><div>Z: <span>-</span></div></li>\
-        <li><div>Mass: <span>-</span></div></li>\
-        <li><div>Radius: <span>-</span></div></li>\
-        <li><div>Speed: <span>-</span></div></li>\
+        <li><div class="status-div-nohover">X: <span>-</span></div></li>\
+        <li><div class="status-div-nohover">Y: <span>-</span></div></li>\
+        <li><div class="status-div-nohover">Z: <span>-</span></div></li>\
+        <li><div class="status-div-nohover">Mass: <span>-</span></div></li>\
+        <li><div class="status-div-nohover">Radius: <span>-</span></div></li>\
+        <li><div class="status-div-nohover">Speed: <span>-</span></div></li>\
       </ul>\
     </li>\
 \
-    <li><div class="status-div-nohover">Settings</div></li>\
+    <li class="status-btn-sub">\
+      <div>Settings</div>\
+      <div class="status-settings status-div-nohover">\
+        <label>\
+          <input type="checkbox" name="hide-plane" /> Hide helper plane\
+        </label>\
+        <label>\
+          <input type="checkbox" name="hide-axis" /> Hide axis helper\
+        </label>\
+      </div>\
+    </li>\
 \
-    <li>\
+    <li class="status-btn-sub">\
       <div class="status-btn-help">Help</div>\
       <div class="status-help-card status-div-nohover">\
           <span>Controls:</span>\

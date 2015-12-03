@@ -23,6 +23,10 @@ var canvas = (function() {
     var opt = null;
     var bodyToAdd = null;
 
+    var helperPlane = null;
+    var axisHelper = null;
+
+
     function init() {
         var container = document.createElement('div');
 
@@ -53,8 +57,8 @@ var canvas = (function() {
         light.position.copy(zeroVector);
         scene.add(light);
 
-
-        scene.add(new THREE.AxisHelper(50));
+        axisHelper = new THREE.AxisHelper(50);
+        scene.add(axisHelper);
 
 
         var planeGeometry = new THREE.CircleGeometry(1000, 8);
@@ -65,9 +69,9 @@ var canvas = (function() {
             transparent: true,
             opacity: 0.1
         });
-        var plane = new THREE.Mesh(planeGeometry, planeMaterial);
-        plane.rotation.x = Math.PI / 2;
-        scene.add(plane);
+        helperPlane = new THREE.Mesh(planeGeometry, planeMaterial);
+        helperPlane.rotation.x = Math.PI / 2;
+        scene.add(helperPlane);
 
 
         var imagePrefix = "data/images/nebula-";
@@ -241,8 +245,10 @@ var canvas = (function() {
                 bodyToAdd = null;
 
                 hideDatGUI(true);
-
-                // statusBar.pauseToggle();
+            },
+            cancel: function() {
+                abortAddingBody();
+                statusBar.pauseToggle();
             }
         };
 
@@ -283,6 +289,7 @@ var canvas = (function() {
         folder.add(opt, 'vz');
 
         gui.add(opt, 'add').name('Confirm');
+        gui.add(opt, 'cancel').name('Cancel');
 
         canvas.gui = gui;
     }
@@ -437,6 +444,14 @@ var canvas = (function() {
         return bodies.length;
     }
 
+    function toggleHelperPlane() {
+        helperPlane.visible = helperPlane.visible ? false : true;
+    }
+
+    function toggleAxisHelper() {
+        axisHelper.visible = axisHelper.visible ? false : true;
+    }
+
     return {
         domElement: init(),
         isPaused: isPaused,
@@ -447,6 +462,8 @@ var canvas = (function() {
         flagAllForRemoval: flagAllForRemoval,
         getBodyPhys: getBodyPhys,
         getNumBodies: getNumBodies,
+        toggleHelperPlane: toggleHelperPlane,
+        toggleAxisHelper: toggleAxisHelper,
         addDatGUI: addDatGUI,
         gui: null // updated in addDatGUI()
     };
