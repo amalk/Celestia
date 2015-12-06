@@ -4,57 +4,37 @@ var statusBar = (function() {
 
     var pauseBtn = null;
     var field = [];
-    var numBodies = 0;
+    var numBodies = null;
+    var curPos = null;
 
     function init() {
         var container = document.createElement('div');
         container.id = 'status';
-
-        /* bad code follows */
-
         container.innerHTML = statusBarHTML;
 
         var subMenus = container.getElementsByClassName('status-btn-sub');
 
-        // Menu Button
-        subMenus[0].onclick = function() {
-            subMenus[1].children[1].style.display = 'none';
-            subMenus[2].children[1].style.display = 'none';
-            subMenus[3].children[1].style.display = 'none';
-            var style = subMenus[0].children[1].style;
-            style.display = style.display === 'block' ? 'none' : 'block';
-            return false;
-        };
+        function handleClick(e) {
+            for (var i = 0, clickedOn = 0; i < subMenus.length; i++) {
+                if (!subMenus[i].contains(e.target)) {
+                    subMenus[i].children[1].style.display = 'none';
+                } else {
+                    clickedOn = i;
+                }
+            }
 
-        // Body Info button
-        subMenus[1].children[0].onclick = function() {
-            subMenus[0].children[1].style.display = 'none';
-            subMenus[2].children[1].style.display = 'none';
-            subMenus[3].children[1].style.display = 'none';
-            var style = subMenus[1].children[1].style;
+            var style = subMenus[clickedOn].children[1].style;
             style.display = style.display === 'block' ? 'none' : 'block';
-            return false;
-        };
 
-        // Settings button
-        subMenus[2].children[0].onclick = function() {
-            subMenus[0].children[1].style.display = 'none';
-            subMenus[1].children[1].style.display = 'none';
-            subMenus[3].children[1].style.display = 'none';
-            var style = subMenus[2].children[1].style;
-            style.display = style.display === 'block' ? 'none' : 'block';
             return false;
-        };
+        }
 
-        // Help button
-        subMenus[3].children[0].onclick = function(event) {
-            subMenus[0].children[1].style.display = 'none';
-            subMenus[1].children[1].style.display = 'none';
-            subMenus[2].children[1].style.display = 'none';
-            var style = subMenus[3].children[1].style;
-            style.display = style.display === 'block' ? 'none' : 'block';
-            return false;
-        };
+        for (var i = 0; i < subMenus.length; i++) {
+            if (i === 0)    // Menu button
+                subMenus[i].onclick = handleClick;
+            else
+                subMenus[i].children[0].onclick = handleClick;
+        }
 
 
         pauseBtn = container.getElementsByClassName('status-btn-pause')[0];
@@ -63,8 +43,10 @@ var statusBar = (function() {
         numBodies = container.getElementsByClassName('status-info-bodycount')[0];
         numBodies = numBodies.children[0];
 
+        curPos = container.getElementsByClassName('status-pos');
 
-        // Sub-menu
+
+        // Sub-menu buttons
 
         var addBtn = container.getElementsByClassName('status-btn-add')[0];
         addBtn.onclick = function() {
@@ -132,6 +114,11 @@ var statusBar = (function() {
         }
 
         numBodies.textContent = canvas.getNumBodies();
+
+        var cameraPos = canvas.getCameraPosition();
+        curPos[0].children[0].textContent = cameraPos.x.toFixed(1);
+        curPos[1].children[0].textContent = cameraPos.y.toFixed(1);
+        curPos[2].children[0].textContent = cameraPos.z.toFixed(1);
     }
 
     return {

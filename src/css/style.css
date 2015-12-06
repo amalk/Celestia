@@ -9,7 +9,7 @@ canvas {
 }
 
 /* Hide dat.gui's save row */
-.dg li.save-row {
+.dg .save-row {
     display: none;
 }
 
@@ -47,12 +47,8 @@ canvas {
     float: none;
 }
 
-#status ul li div:hover {
+#status ul li .hover-on:hover {
     background: #1A1A1A;
-}
-
-#status ul li div.status-div-nohover:hover {
-    background: #111111;
 }
 
 /* First level dropdown */
@@ -74,34 +70,39 @@ canvas {
 }
 
 /* Custom styling */
-#status li.status-btn-pause-wrap {
+#status .status-btn-pause-wrap {
     float: right;
     background-color: #990000;
 }
 
-#status div.status-btn-pause {
+#status .status-btn-pause {
     width: 50px;
     text-align: center;
     border-right: none;
     border-left: 1px solid #2C2C2C;
 }
 
-#status ul.status-body-info {
+#status .status-body-info {
     width: 130px;
 }
 
-#status ul.status-body-info span,
-#status div.status-info-bodycount span {
+#status .status-info {
+    float: right;
+}
+
+#status .status-body-info span,
+#status .status-info span {
     color: #FF0000;
     font-weight: bold;
 }
 
-#status div.status-info-bodycount {
-    border-left: 1px solid #2C2C2C;
+#status .status-info div {
+    border-right: 1px solid #2C2C2C;
+    float: left;
 }
 
-#status li.status-info {
-    float: right;
+#status .status-info .status-pos {
+    width: 60px;
 }
 
 #status .status-help-card {

@@ -1,34 +1,38 @@
 var statusBarHTML =
   '<ul>\
     <li class="status-btn-sub">\
-      <div>Menu</div>\
+      <div class="hover-on">Menu</div>\
       <ul>\
-        <li><div class="status-btn-add">Add Body</div></li>\
+        <li><div class="hover-on status-btn-add">Add Body</div></li>\
         <li>\
-          <div>Remove Body</div>\
+          <div class="hover-on">Remove Body</div>\
           <ul>\
-            <li><div class="status-btn-remove-sel">Remove Selected</div></li>\
-            <li><div class="status-btn-remove-all">Remove All</div></li>\
+            <li>\
+              <div class="hover-on status-btn-remove-sel">Remove Selected</div>\
+            </li>\
+            <li>\
+              <div class="hover-on status-btn-remove-all">Remove All</div>\
+            </li>\
           </ul>\
         </li>\
       </ul>\
     </li>\
 \
     <li class="status-btn-sub">\
-      <div>Body Info</div>\
+      <div class="hover-on">Body Info</div>\
       <ul class="status-body-info">\
-        <li><div class="status-div-nohover">X: <span>-</span></div></li>\
-        <li><div class="status-div-nohover">Y: <span>-</span></div></li>\
-        <li><div class="status-div-nohover">Z: <span>-</span></div></li>\
-        <li><div class="status-div-nohover">Mass: <span>-</span></div></li>\
-        <li><div class="status-div-nohover">Radius: <span>-</span></div></li>\
-        <li><div class="status-div-nohover">Speed: <span>-</span></div></li>\
+        <li><div>X: <span>-</span></div></li>\
+        <li><div>Y: <span>-</span></div></li>\
+        <li><div>Z: <span>-</span></div></li>\
+        <li><div>Mass: <span>-</span></div></li>\
+        <li><div>Radius: <span>-</span></div></li>\
+        <li><div>Speed: <span>-</span></div></li>\
       </ul>\
     </li>\
 \
     <li class="status-btn-sub">\
-      <div>Settings</div>\
-      <div class="status-settings status-div-nohover">\
+      <div class="hover-on">Settings</div>\
+      <div class="status-settings">\
         <label>\
           <input type="checkbox" name="hide-plane" /> Hide helper plane\
         </label>\
@@ -39,8 +43,8 @@ var statusBarHTML =
     </li>\
 \
     <li class="status-btn-sub">\
-      <div class="status-btn-help">Help</div>\
-      <div class="status-help-card status-div-nohover">\
+      <div class="hover-on status-btn-help">Help</div>\
+      <div class="status-help-card">\
           <span>Controls:</span>\
           <p>Use arrow keys for looking around.</p>\
           <p>W, S, A, D for moving forward, backward, left and right.</p>\
@@ -53,12 +57,23 @@ var statusBarHTML =
     </li>\
 \
     <li class="status-info">\
-      <div class="status-div-nohover status-info-bodycount">\
+      <div class="status-info-bodycount">\
         # of bodies: <span>0</span>\
+      </div>\
+      <div class="status-pos status-pos-x">\
+        X: <span>-</span>\
+      </div>\
+      <div class="status-pos status-pos-y">\
+        Y: <span>-</span>\
+      </div>\
+      <div class="status-pos status-pos-z">\
+        Z: <span>-</span>\
       </div>\
     </li>\
 \
-    <li class="status-btn-pause-wrap"><div class="status-btn-pause">Start</div></li>\
+    <li class="status-btn-pause-wrap">\
+      <div class="hover-on status-btn-pause">Start</div>\
+    </li>\
 \
   </ul>\
 ';

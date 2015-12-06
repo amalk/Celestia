@@ -297,7 +297,7 @@ var canvas = (function() {
     function addBody() {
         abortAddingBody();
 
-        focusAndMoveCamera();
+        focusAndMoveCamera(zeroVector);
 
         var physics = {
             radius: Config.NEW_BODY_RADIUS,
@@ -322,8 +322,10 @@ var canvas = (function() {
         }
     }
 
-    function focusAndMoveCamera() {
+    function focusAndMoveCamera(destination) {
         controls.enabled = false;
+
+        var offset = (destination === zeroVector);
 
         var m1 = new THREE.Matrix4();
         m1.lookAt(camera.position, zeroVector, new THREE.Vector3(0, 1, 0));
@@ -342,9 +344,9 @@ var canvas = (function() {
                 var direction = camera.getWorldDirection();
 
                 TweenLite.to(camera.position, 1, {
-                    x: 0,
-                    y: 40,
-                    z: 200,
+                    x: destination.x + (offset ? 0 : 0),
+                    y: destination.y + (offset ? 40 : 0),
+                    z: destination.z + (offset ? 200 : 0),
                     ease: Power2.easeInOut,
                     onUpdate: function() {
                         camera.lookAt(direction);
@@ -444,6 +446,10 @@ var canvas = (function() {
         return bodies.length;
     }
 
+    function getCameraPosition() {
+        return camera.position;
+    }
+
     function toggleHelperPlane() {
         helperPlane.visible = helperPlane.visible ? false : true;
     }
@@ -462,6 +468,7 @@ var canvas = (function() {
         flagAllForRemoval: flagAllForRemoval,
         getBodyPhys: getBodyPhys,
         getNumBodies: getNumBodies,
+        getCameraPosition: getCameraPosition,
         toggleHelperPlane: toggleHelperPlane,
         toggleAxisHelper: toggleAxisHelper,
         addDatGUI: addDatGUI,
