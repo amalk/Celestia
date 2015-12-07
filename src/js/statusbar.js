@@ -6,6 +6,7 @@ var statusBar = (function() {
     var field = [];
     var numBodies = null;
     var curPos = null;
+    var posVector = new THREE.Vector3(0, 60, 300);
 
     function init() {
         var container = document.createElement('div');
@@ -30,7 +31,7 @@ var statusBar = (function() {
         }
 
         for (var i = 0; i < subMenus.length; i++) {
-            if (i === 0)    // Menu button
+            if (i === 0) // Menu button
                 subMenus[i].onclick = handleClick;
             else
                 subMenus[i].children[0].onclick = handleClick;
@@ -43,7 +44,28 @@ var statusBar = (function() {
         numBodies = container.getElementsByClassName('status-info-bodycount')[0];
         numBodies = numBodies.children[0];
 
+        var posBtn = container.getElementsByClassName('status-btn-pos')[0];
+        var posCard = container.getElementsByClassName('status-cur-pos')[0];
+        posBtn.onclick = function() {
+            var style = posCard.style;
+            style.display = style.display === 'block' ? 'none' : 'block';
+            return false;
+        };
         curPos = container.getElementsByClassName('status-pos');
+        for (var i = 0; i < curPos.length; i++) {
+            curPos[i].children[0].onkeypress = function(e) {
+                return (e.charCode >= 48 && e.charCode <= 57) ||
+                    e.charCode === 45;
+            };
+            curPos[i].children[0].onchange = function() {
+                posVector.setX(parseInt(curPos[0].children[0].value));
+                posVector.setY(parseInt(curPos[1].children[0].value));
+                posVector.setZ(parseInt(curPos[2].children[0].value));
+            };
+            curPos[i].children[0].onblur = function() {
+                canvas.focusAndMoveCamera(posVector);
+            };
+        }
 
 
         // Sub-menu buttons
@@ -116,9 +138,12 @@ var statusBar = (function() {
         numBodies.textContent = canvas.getNumBodies();
 
         var cameraPos = canvas.getCameraPosition();
-        curPos[0].children[0].textContent = cameraPos.x.toFixed(1);
-        curPos[1].children[0].textContent = cameraPos.y.toFixed(1);
-        curPos[2].children[0].textContent = cameraPos.z.toFixed(1);
+        if (curPos[0].children[0] !== document.activeElement)
+            curPos[0].children[0].value = cameraPos.x >> 0;
+        if (curPos[1].children[0] !== document.activeElement)
+            curPos[1].children[0].value = cameraPos.y >> 0;
+        if (curPos[2].children[0] !== document.activeElement)
+            curPos[2].children[0].value = cameraPos.z >> 0;
     }
 
     return {

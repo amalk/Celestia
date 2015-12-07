@@ -43,7 +43,7 @@ var statusBarHTML =
     </li>\
 \
     <li class="status-btn-sub">\
-      <div class="hover-on status-btn-help">Help</div>\
+      <div class="hover-on">Help</div>\
       <div class="status-help-card">\
           <span>Controls:</span>\
           <p>Use arrow keys for looking around.</p>\
@@ -57,17 +57,28 @@ var statusBarHTML =
     </li>\
 \
     <li class="status-info">\
+      <div class="hover-on status-btn-pos">Current Position</div>\
+      <ul class="status-cur-pos">\
+        <li>\
+          <div class="status-pos">\
+            X: <input type="text" size="4" maxlength="4"/>\
+          </div>\
+        </li>\
+        <li>\
+          <div class="status-pos">\
+            Y: <input type="text" size="4" maxlength="4"/>\
+          </div>\
+        </li>\
+        <li>\
+          <div class="status-pos">\
+            Z: <input type="text" size="4" maxlength="4"/>\
+          </div>\
+        </li>\
+      </ul>\
+\
+    <li class="status-info">\
       <div class="status-info-bodycount">\
         # of bodies: <span>0</span>\
-      </div>\
-      <div class="status-pos status-pos-x">\
-        X: <span>-</span>\
-      </div>\
-      <div class="status-pos status-pos-y">\
-        Y: <span>-</span>\
-      </div>\
-      <div class="status-pos status-pos-z">\
-        Z: <span>-</span>\
       </div>\
     </li>\
 \

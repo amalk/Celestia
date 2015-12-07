@@ -36,8 +36,8 @@ var canvas = (function() {
 
         var VIEW_ANGLE = 45,
             ASPECT = SCREEN.w / SCREEN.h,
-            NEAR = 1,
-            FAR = 20000;
+            NEAR = 0.5,
+            FAR = 15000;
 
         camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
         camera.position.set(0, 60, 300);
@@ -45,7 +45,6 @@ var canvas = (function() {
         scene.add(camera);
         renderer = new THREE.WebGLRenderer();
         renderer.setSize(SCREEN.w, SCREEN.h);
-        // renderer.setClearColor(0x555555);
 
         clock = new THREE.Clock();
 
@@ -471,6 +470,7 @@ var canvas = (function() {
         getCameraPosition: getCameraPosition,
         toggleHelperPlane: toggleHelperPlane,
         toggleAxisHelper: toggleAxisHelper,
+        focusAndMoveCamera: focusAndMoveCamera,
         addDatGUI: addDatGUI,
         gui: null // updated in addDatGUI()
     };

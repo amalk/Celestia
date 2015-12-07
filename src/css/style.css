@@ -96,13 +96,17 @@ canvas {
     font-weight: bold;
 }
 
-#status .status-info div {
-    border-right: 1px solid #2C2C2C;
-    float: left;
+#status .status-info .status-cur-pos {
+    width: 100%;
+    overflow: hidden;
 }
 
-#status .status-info .status-pos {
-    width: 60px;
+#status .status-info .status-cur-pos  input {
+    border: 0;
+    outline: none;
+    padding: 3px;
+    color: #2fa1d6;
+    background-color: #303030;
 }
 
 #status .status-help-card {
