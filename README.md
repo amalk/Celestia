@@ -1,6 +1,9 @@
 # Celestia
 WebGL gravity simulator
 
+### Demo
+http://amalk.github.io/Celestia/src/
+
 ### Development
 Install [Node.js].
 
